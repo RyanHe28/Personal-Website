@@ -20,6 +20,9 @@ import {
   SOCIAL_LINKS,
 } from './data'
 
+import Image from 'next/image'
+
+
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
   visible: {
@@ -88,6 +91,66 @@ function ProjectVideo({ src }: ProjectVideoProps) {
     </MorphingDialog>
   )
 }
+type ProjectMediaProps = {
+  video?: string
+  image?: string
+  alt?: string
+}
+
+function ProjectMedia({ video, image, alt = 'Project preview' }: ProjectMediaProps) {
+  // If an image is provided, render the image
+  if (image) {
+    return (
+      <MorphingDialog
+        transition={{
+          type: 'spring',
+          bounce: 0,
+          duration: 0.3,
+        }}
+      >
+        <MorphingDialogTrigger>
+          <Image
+            src={image}
+            alt={alt}
+            width={1200}
+            height={675}
+            className="aspect-video w-full cursor-zoom-in rounded-xl object-cover"
+            priority={false}
+          />
+        </MorphingDialogTrigger>
+
+        <MorphingDialogContainer>
+          <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+            <Image
+              src={image}
+              alt={alt}
+              width={1600}
+              height={900}
+              className="aspect-video h-[50vh] w-full rounded-xl object-contain md:h-[70vh]"
+            />
+          </MorphingDialogContent>
+
+          <MorphingDialogClose
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+            variants={{
+              initial: { opacity: 0 },
+              animate: {
+                opacity: 1,
+                transition: { delay: 0.3, duration: 0.1 },
+              },
+              exit: { opacity: 0, transition: { duration: 0 } },
+            }}
+          >
+            <XIcon className="h-5 w-5 text-zinc-500" />
+          </MorphingDialogClose>
+        </MorphingDialogContainer>
+      </MorphingDialog>
+    )
+  }
+
+  // Otherwise fall back to video
+  return <ProjectVideo src={video!} />
+}
 
 function MagneticSocialLink({
   children,
@@ -137,8 +200,8 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
+            Product-oriented student building real tools for real users.
+            Through internships and side projects, I’ve worked end-to-end on products from user interviews to launch.
           </p>
         </div>
       </motion.section>
@@ -147,12 +210,12 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
+        <h3 className="mb-5 text-lg font-medium">Side Projects and Extracurriculars</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
               <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
+                <ProjectMedia video={project.video} image={project.image} alt={project.name} />
               </div>
               <div className="px-1">
                 <a
@@ -176,7 +239,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
+        <h3 className="mb-5 text-lg font-medium">Work Experiences</h3>
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
             <a
@@ -209,7 +272,7 @@ export default function Personal() {
           ))}
         </div>
       </motion.section>
-
+      {/*
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
@@ -245,6 +308,7 @@ export default function Personal() {
           </AnimatedBackground>
         </div>
       </motion.section>
+      */}
 
       <motion.section
         variants={VARIANTS_SECTION}

@@ -2,9 +2,11 @@ type Project = {
   name: string
   description: string
   link: string
-  video: string
+  video?: string
+  image?: string
   id: string
 }
+
 
 type WorkExperience = {
   company: string
@@ -29,18 +31,20 @@ type SocialLink = {
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Motion Primitives Pro',
+    name: 'SilverLink',
     description:
-      'Advanced components and templates to craft beautiful websites.',
-    link: 'https://pro.motion-primitives.com/',
+      '"one stop shop" app for the elderly navigating digital services including payments, identification, and public transportation.',
+    link: '',
+    image: '/silverLink.png',
     video:
       'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
     id: 'project1',
   },
   {
-    name: 'Motion Primitives',
-    description: 'UI kit to make beautiful, animated interfaces.',
+    name: 'Analysis of car related fatalities in the US',
+    description: 'Data-driven project analyzing car accident fatalities in the US using R and XGBoost to model fatality risk and evaluate feature importance across demographic and roadway variables.',
     link: 'https://motion-primitives.com/',
+    image: '/carCrash.png',
     video:
       'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/XSfIvT7BUWbPRXhrbLed/ee6871c9-8400-49d2-8be9-e32675eabf7e.mp4?_a=DATAdtAAZAA0',
     id: 'project2',
@@ -49,30 +53,39 @@ export const PROJECTS: Project[] = [
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
-    company: 'Reglazed Studio',
-    title: 'CEO',
-    start: '2024',
+    company: 'CashBFF',
+    title: 'Lead Product Manager',
+    start: 'Nov 2025',
     end: 'Present',
     link: 'https://ibelick.com',
     id: 'work1',
   },
   {
-    company: 'Freelance',
-    title: 'Design Engineer',
-    start: '2022',
-    end: '2024',
+    company: 'Yinzer Technology',
+    title: 'Product Management Intern',
+    start: 'Jun 2025',
+    end: 'Aug 2025',
     link: 'https://ibelick.com',
     id: 'work2',
   },
   {
-    company: 'Freelance',
-    title: 'Front-end Developer',
-    start: '2017',
-    end: 'Present',
+    company: 'Creacion Ventures',
+    title: 'Venture Capital Summer Analyst',
+    start: 'Jun 2025',
+    end: 'Aug 2025',
     link: 'https://ibelick.com',
     id: 'work3',
   },
+  {
+    company: 'LawMato',
+    title: 'Product Management Intern',
+    start: 'May 2023',
+    end: 'Aug 2023',
+    link: 'https://ibelick.com',
+    id: 'work4',
+  },
 ]
+
 
 export const BLOG_POSTS: BlogPost[] = [
   {
@@ -101,25 +114,30 @@ export const BLOG_POSTS: BlogPost[] = [
     link: '/blog/example-mdx-metadata',
     uid: 'blog-4',
   },
+  
 ]
+
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
-    link: 'https://github.com/ibelick',
+    link: 'https://github.com/RyanHe28',
   },
+  /*
   {
     label: 'Twitter',
     link: 'https://twitter.com/ibelick',
   },
+  */
   {
     label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/ibelick',
+    link: 'https://www.linkedin.com/in/ryanhe0124',
   },
-  {
+  /*{
     label: 'Instagram',
     link: 'https://www.instagram.com/ibelick',
   },
+  */
 ]
 
-export const EMAIL = 'your@email.com'
+export const EMAIL = 'ryanhe0124@gmail.com'
