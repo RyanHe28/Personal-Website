@@ -57,7 +57,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     title: 'Lead Product Manager',
     start: 'Nov 2025',
     end: 'Present',
-    link: 'https://ibelick.com',
+    link: '',
     id: 'work1',
   },
   {
@@ -65,7 +65,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     title: 'Product Management Intern',
     start: 'Jun 2025',
     end: 'Aug 2025',
-    link: 'https://ibelick.com',
+    link: '',
     id: 'work2',
   },
   {
@@ -73,7 +73,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     title: 'Venture Capital Summer Analyst',
     start: 'Jun 2025',
     end: 'Aug 2025',
-    link: 'https://ibelick.com',
+    link: '',
     id: 'work3',
   },
   {
@@ -81,7 +81,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     title: 'Product Management Intern',
     start: 'May 2023',
     end: 'Aug 2023',
-    link: 'https://ibelick.com',
+    link: '',
     id: 'work4',
   },
 ]
@@ -126,7 +126,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   /*
   {
     label: 'Twitter',
-    link: 'https://twitter.com/ibelick',
+    link: '',
   },
   */
   {
@@ -135,7 +135,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   /*{
     label: 'Instagram',
-    link: 'https://www.instagram.com/ibelick',
+    link: '',
   },
   */
 ]
