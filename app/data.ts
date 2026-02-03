@@ -35,7 +35,7 @@ export const PROJECTS: Project[] = [
     description:
       '"one stop shop" app for the elderly navigating digital services including payments, identification, and public transportation.',
     link: '',
-    image: '/silverLink.png',
+    image: '/silverLink_v2.png',
     video:
       'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
     id: 'project1',
