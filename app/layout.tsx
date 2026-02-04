@@ -41,8 +41,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
+        className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950 relative`}
       >
+        <div className="fixed inset-0 -z-10 bg-gradient-to-br from-blue-50/50 via-purple-50/40 to-pink-50/50 dark:from-blue-950/20 dark:via-purple-950/15 dark:to-pink-950/20 pointer-events-none"></div>
         <ThemeProvider
           enableSystem={true}
           attribute="class"

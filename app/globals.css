@@ -29,4 +29,12 @@
   --sh-jsxliterals: #7aa2f7;
   --sh-property: #73daca;
   --sh-entity: #e0af68;
+  
+  /* Color palette for accents */
+  --color-primary: #3b82f6;      /* Blue */
+  --color-secondary: #8b5cf6;    /* Purple */
+  --color-tertiary: #ec4899;     /* Pink */
+  --color-quaternary: #06b6d4;   /* Cyan */
+  --color-accent-1: #f59e0b;     /* Amber */
+  --color-accent-2: #10b981;     /* Emerald */
 }

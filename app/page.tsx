@@ -155,15 +155,17 @@ function ProjectMedia({ video, image, alt = 'Project preview' }: ProjectMediaPro
 function MagneticSocialLink({
   children,
   link,
+  colorClass,
 }: {
   children: React.ReactNode
   link: string
+  colorClass?: string
 }) {
   return (
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        className={`group relative inline-flex shrink-0 items-center gap-[1px] rounded-full px-2.5 py-1 text-sm transition-all duration-200 ${colorClass || 'bg-zinc-100 text-black dark:bg-zinc-800 dark:text-zinc-100'} hover:shadow-lg hover:scale-105`}
       >
         {children}
         <svg
@@ -212,26 +214,34 @@ export default function Personal() {
       >
         <h3 className="mb-5 text-lg font-medium">Side Projects and Extracurriculars</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => (
-            <div key={project.name} className="space-y-2">
-              <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectMedia video={project.video} image={project.image} alt={project.name} />
+          {PROJECTS.map((project, index) => {
+            const colors = [
+              'border-blue-500/50',
+              'border-purple-500/50',
+              'border-pink-500/50',
+              'border-cyan-500/50',
+            ]
+            const color = colors[index % colors.length]
+            return (
+              <div key={project.name} className={`space-y-2 border-l-2 ${color} pl-4 transition-all duration-300 hover:border-l-4 hover:pl-3`}>
+                <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
+                  <ProjectMedia video={project.video} image={project.image} alt={project.name} />
+                </div>
+                <div className="px-1">
+                  <a
+                    className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
+                    href={project.link}
+                  >
+                    {project.name}
+                    <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 dark:bg-zinc-50 transition-all duration-200 group-hover:max-w-full"></span>
+                  </a>
+                  <p className="text-base text-zinc-600 dark:text-zinc-400">
+                    {project.description}
+                  </p>
+                </div>
               </div>
-              <div className="px-1">
-                <a
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
-                  target="_blank"
-                >
-                  {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 dark:bg-zinc-50 transition-all duration-200 group-hover:max-w-full"></span>
-                </a>
-                <p className="text-base text-zinc-600 dark:text-zinc-400">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </motion.section>
 
@@ -241,35 +251,38 @@ export default function Personal() {
       >
         <h3 className="mb-5 text-lg font-medium">Work Experiences</h3>
         <div className="flex flex-col space-y-2">
-          {WORK_EXPERIENCE.map((job) => (
-            <a
-              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={job.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={job.id}
-            >
-              <Spotlight
-                className="from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
-                size={64}
-              />
-              <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {job.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {job.company}
+          {WORK_EXPERIENCE.map((job, index) => {
+            const gradients = [
+              'from-blue-500 via-blue-400 to-blue-300 dark:from-blue-400 dark:via-blue-500 dark:to-blue-600',
+              'from-purple-500 via-purple-400 to-purple-300 dark:from-purple-400 dark:via-purple-500 dark:to-purple-600',
+              'from-pink-500 via-pink-400 to-pink-300 dark:from-pink-400 dark:via-pink-500 dark:to-pink-600',
+              'from-cyan-500 via-cyan-400 to-cyan-300 dark:from-cyan-400 dark:via-cyan-500 dark:to-cyan-600',
+            ]
+            return (
+              <a
+                className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30 transition-all duration-300 hover:shadow-md"
+                href={job.link}
+                key={job.id}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-r ${gradients[index % gradients.length]} opacity-60 blur-3xl`} style={{ inset: '-20px' }}></div>
+                <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
+                  <div className="relative flex w-full flex-row justify-between">
+                    <div>
+                      <h4 className="font-normal dark:text-zinc-100">
+                        {job.title}
+                      </h4>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        {job.company}
+                      </p>
+                    </div>
+                    <p className="text-zinc-600 dark:text-zinc-400">
+                      {job.start} - {job.end}
                     </p>
                   </div>
-                  <p className="text-zinc-600 dark:text-zinc-400">
-                    {job.start} - {job.end}
-                  </p>
                 </div>
-              </div>
-            </a>
-          ))}
+              </a>
+            )
+          })}
         </div>
       </motion.section>
       {/*
@@ -322,11 +335,23 @@ export default function Personal() {
           </a>
         </p>
         <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
+          {SOCIAL_LINKS.map((link, index) => {
+            const colors = [
+              'bg-blue-500/90 text-white dark:bg-blue-600 dark:text-white hover:bg-blue-600 dark:hover:bg-blue-700',
+              'bg-purple-500/90 text-white dark:bg-purple-600 dark:text-white hover:bg-purple-600 dark:hover:bg-purple-700',
+              'bg-pink-500/90 text-white dark:bg-pink-600 dark:text-white hover:bg-pink-600 dark:hover:bg-pink-700',
+              'bg-cyan-500/90 text-white dark:bg-cyan-600 dark:text-white hover:bg-cyan-600 dark:hover:bg-cyan-700',
+            ]
+            return (
+              <MagneticSocialLink 
+                key={link.label} 
+                link={link.link}
+                colorClass={colors[index % colors.length]}
+              >
+                {link.label}
+              </MagneticSocialLink>
+            )
+          })}
         </div>
       </motion.section>
     </motion.main>
